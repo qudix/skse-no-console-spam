@@ -1,15 +1,16 @@
-# CommonLibSSE-NG Plugin Template
+# no-console-spam
 
-This is a basic plugin template using CommonLibSSE-NG.
+SKSE64 plugin that gets rid of the annoying console spam when loading a save.
+This is caused by conditions using the same functions as console commands, which print their result to the console.
 
 ### Requirements
-* [XMake](https://xmake.io) [2.7.4+]
+* [XMake](https://xmake.io) [2.7.8+]
 * C++20 Compiler (MSVC, Clang?)
 
 ## Getting started
 ```bat
-git clone https://github.com/Qudix/template-commonlibsse-ng
-cd template-commonlibsse-ng
+git clone https://github.com/Qudix/no-console-spam
+cd no-console-spam
 ```
 
 ### Building
@@ -19,13 +20,6 @@ xmake build
 ```
 
 > ***Note:*** *This will generate a `build/windows/` directory in the **project's root directory** with the build output.*
-
-### Upgrading Packages (Optional)
-To upgrade the project's dependencies, run the following commands:
-```bat
-xmake repo --update
-xmake require --upgrade
-```
 
 ### Project Generation (Optional)
 If you want to generate a Visual Studio project, you can run the following command:
