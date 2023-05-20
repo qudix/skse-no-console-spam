@@ -16,38 +16,12 @@ void InitLogging()
 	};
 
 	auto logger = std::make_shared<spdlog::logger>("global", sinks.begin(), sinks.end());
-    logger->set_level(spdlog::level::trace);
-    logger->flush_on(spdlog::level::trace);
+    logger->set_level(spdlog::level::info);
+    logger->flush_on(spdlog::level::info);
 
     spdlog::set_default_logger(std::move(logger));
     spdlog::set_pattern("[%^%L%$] %v");
 }
-
-/*
-static std::uint64_t g_PrintCount{ 0 };
-
-struct ScriptHook
-{
-    static void CompileAndRun(RE::Script* a_this, RE::ScriptCompiler* a_compiler, RE::COMPILER_NAME a_type, RE::TESObjectREFR* a_target)
-    {
-        logs::info("PrintCount: {}", g_PrintCount);
-
-        logs::info("[Script]");
-        logs::info("  > Command: {}", a_this->GetCommand());
-
-        return _CompileAndRun(a_this, a_compiler, a_type, a_target);
-    }
-
-    static inline REL::Relocation<decltype(CompileAndRun)> _CompileAndRun;
-
-    static void Install()
-    {
-        auto& trampoline = SKSE::GetTrampoline();
-        REL::Relocation<std::uintptr_t> target{ REL::RelocationID{ 0, 52952 }, REL::VariantOffset{ 0, 0x52, 0 } };
-        _CompileAndRun = trampoline.write_call<5>(target.address(), CompileAndRun);
-    }
-};
-*/
 
 struct ConsoleLogHook
 {
@@ -55,8 +29,6 @@ struct ConsoleLogHook
     {
         std::va_list args;
         va_start(args, a_fmt);
-
-        //g_PrintCount++;
 
         const auto ui = RE::UI::GetSingleton();
         const auto player = RE::PlayerCharacter::GetSingleton();
@@ -440,7 +412,6 @@ struct ConsoleLogHook
 
 void InitHooks()
 {
-    //ScriptHook::Install();
     ConsoleLogHook::Install();
 }
 
