@@ -409,12 +409,6 @@ struct ConsoleLogHook
     }
 };
 
-
-void InitHooks()
-{
-    ConsoleLogHook::Install();
-}
-
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
     InitLogging();
@@ -424,7 +418,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 
     SKSE::Init(a_skse);
     SKSE::AllocTrampoline(48);
-    InitHooks();
+    ConsoleLogHook::Install();
 
     logs::info("{} loaded.", plugin->GetName());
 
