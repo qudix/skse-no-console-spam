@@ -8,14 +8,14 @@ void InitLogging()
         return;
 
     const auto plugin = SKSE::PluginDeclaration::GetSingleton();
-    *path /= fmt::format("{}.log", plugin->GetName());
+    *path /= std::format("{}.log", plugin->GetName());
 
-	std::vector<spdlog::sink_ptr> sinks{ 
-		std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true), 
-		std::make_shared<spdlog::sinks::msvc_sink_mt>() 
-	};
+    std::vector<spdlog::sink_ptr> sinks{ 
+        std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true), 
+        std::make_shared<spdlog::sinks::msvc_sink_mt>() 
+    };
 
-	auto logger = std::make_shared<spdlog::logger>("global", sinks.begin(), sinks.end());
+    auto logger = std::make_shared<spdlog::logger>("global", sinks.begin(), sinks.end());
     logger->set_level(spdlog::level::info);
     logger->flush_on(spdlog::level::info);
 
@@ -41,9 +41,8 @@ struct ConsoleLogHook
 
     static void Hook(REL::RelocationID a_id, REL::VariantOffset a_offset)
     {
-        REL::Relocation<std::uintptr_t> target{ a_id, a_offset };
-        auto& trampoline = SKSE::GetTrampoline();
-        trampoline.write_call<5>(target.address(), Print);
+        REL::Relocation target{ a_id, a_offset };
+        target.write_call<5>(Print);
     }
 
     static void Install()
