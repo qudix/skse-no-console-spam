@@ -31,7 +31,6 @@ target("skse-no-console-spam")
 
     -- add commonlibsse-ng plugin
     add_rules("commonlibsse-ng.plugin", {
-        name = "skse-no-console-spam",
         author = "qudix",
         description = "BEGONE CONSOLE SPAM!"
     })
