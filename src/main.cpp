@@ -47,7 +47,7 @@ struct ConsoleLogHook
 
     static void Install()
     {
-                                                     // [FID] [N] [Name]
+        //        [SE] [AE]         [SE] [AE] [VR]      [FID] [N] [Name]
         Hook(REL_ID(0, 21573), REL_OF(0, 0x0D4, 0)); // (000) [ ] (GetWantBlocking)
         Hook(REL_ID(0, 21405), REL_OF(0, 0x077, 0)); // (001) [ ] (GetDistance)
         Hook(REL_ID(0, 21533), REL_OF(0, 0x08C, 0)); // (005) [ ] (GetLocked)
@@ -410,6 +410,11 @@ struct ConsoleLogHook
 
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
+    if (REL::Module::IsSE()) {
+        REX::W32::MessageBoxA(nullptr, "SkyrimSE 1.5.x is not supported!\n\nIf you wish to rectify this and you know how to reverse engineer, you are welcome to send a pull request on this plugin's GitHub repo.", "No Console Spam", 0);
+        return false;
+    }
+
     InitLogging();
 
     const auto plugin = SKSE::PluginDeclaration::GetSingleton();
