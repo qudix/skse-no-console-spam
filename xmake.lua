@@ -6,7 +6,7 @@ includes("lib/commonlibsse-ng")
 
 -- set project
 set_project("skse-no-console-spam")
-set_version("1.0.0")
+set_version("1.1.0")
 set_license("GPL-3.0")
 
 -- set defaults
@@ -31,6 +31,7 @@ target("skse-no-console-spam")
 
     -- add commonlibsse-ng plugin
     add_rules("commonlibsse-ng.plugin", {
+        name = "no-console-spam",
         author = "qudix",
         description = "BEGONE CONSOLE SPAM!"
     })
