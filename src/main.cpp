@@ -319,10 +319,10 @@ struct ConsoleLogHook
         Hook(REL_ID(21216, 21673), REL_OF(0x077, 0x077, 0)); // (617) [ ] (HasAssociationTypeAny)
         Hook(REL_ID(21215, 21672), REL_OF(0x072, 0x072, 0)); // (618) [ ] (HasFamilyRelationshipAny)
         Hook(REL_ID(21254, 21711), REL_OF(0x06F, 0x06F, 0)); // (619) [A] (GetPathingTargetOffset)
-        Hook(REL_ID(21254, 21711), REL_OF(0x0CE, 0x0C6, 0)); // (619) [A]
-        Hook(REL_ID(21254, 21711), REL_OF(0x0F3, 0x0EB, 0)); // (619) [B]
-        Hook(REL_ID(21254, 21711), REL_OF(0x118, 0x110, 0)); // (619) [C]
-        Hook(REL_ID(21254, 21711), REL_OF(0x138, 0x130, 0)); // (619) [D]
+        Hook(REL_ID(21254, 21711), REL_OF(0x0CE, 0x0C6, 0)); // (619) [B]
+        Hook(REL_ID(21254, 21711), REL_OF(0x0F3, 0x0EB, 0)); // (619) [C]
+        Hook(REL_ID(21254, 21711), REL_OF(0x118, 0x110, 0)); // (619) [D]
+        Hook(REL_ID(21254, 21711), REL_OF(0x138, 0x130, 0)); // (619) [E]
         Hook(REL_ID(21255, 21712), REL_OF(0x074, 0x074, 0)); // (620) [A] (GetPathingTargetAngleOffset)
         Hook(REL_ID(21255, 21712), REL_OF(0x111, 0x111, 0)); // (620) [B]
         Hook(REL_ID(21255, 21712), REL_OF(0x136, 0x136, 0)); // (620) [C]
@@ -411,11 +411,6 @@ struct ConsoleLogHook
 
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
-    //if (REL::Module::IsSE()) {
-    //    REX::W32::MessageBoxA(nullptr, "SkyrimSE 1.5.x is not supported!\n\nIf you wish to rectify this and you know how to reverse engineer, you are welcome to send a pull request on this plugin's GitHub repo.", "No Console Spam", 0);
-    //    return false;
-    //}
-
     InitLogging();
 
     const auto plugin = SKSE::PluginDeclaration::GetSingleton();
