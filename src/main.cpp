@@ -47,7 +47,7 @@ struct ConsoleLogHook
 
     static void Install()
     {
-        //        [SE] [AE]         [SE] [AE] [VR]      [FID] [N] [Name]
+        //            [SE] [AE]             [SE] [AE] [VR]      [FID] [N] [Name]
         Hook(REL_ID(21121, 21573), REL_OF(0x0CE, 0x0D4, 0)); // (000) [ ] (GetWantBlocking)
         Hook(REL_ID(20955, 21405), REL_OF(0x077, 0x077, 0)); // (001) [ ] (GetDistance)
         Hook(REL_ID(21083, 21533), REL_OF(0x08C, 0x08C, 0)); // (005) [ ] (GetLocked)
