@@ -1,8 +1,8 @@
 -- set minimum xmake version
-set_xmakever("2.8.2")
+set_xmakever("2.9.0")
 
 -- includes
-includes("lib/commonlibsse-ng")
+includes("lib/commonlibsse")
 
 -- set project
 set_project("skse-no-console-spam")
@@ -20,16 +20,13 @@ add_rules("plugin.vsxmake.autoupdate")
 -- set policies
 set_policy("package.requires_lock", true)
 
--- set configs
-set_config("skyrim_vr", false)
-
 -- targets
 target("skse-no-console-spam")
     -- add dependencies to target
-    add_deps("commonlibsse-ng")
+    add_deps("commonlibsse")
 
-    -- add commonlibsse-ng plugin
-    add_rules("commonlibsse-ng.plugin", {
+    -- add commonlibsse plugin
+    add_rules("commonlibsse.plugin", {
         name = "no-console-spam",
         author = "qudix",
         description = "BEGONE CONSOLE SPAM!"
